@@ -22,15 +22,10 @@ def get_blur_kernel(filter_size: int=3) -> np.ndarray:
     
     Returns:
         A 3x3 numpy array normalized so that it sums to 1.
-    """
-    # ================================================================ #
-    # TODO: Implement a 3x3 averaging kernel.                          #
-    # Hint: The kernel should have shape (3, 3) and sum to 1.          #
-    # ================================================================ #
-    
-    kernel = None
-    
+    """    
     # --- SOLUTION START ---
+    kernel = None
+
     kernel = np.ones((filter_size, filter_size)) / (filter_size * filter_size) 
     # --- SOLUTION END ---
     
@@ -46,14 +41,9 @@ def get_edge_detection_kernel() -> np.ndarray:
     Returns:
         A 3x3 numpy array.
     """
-    # ================================================================ #
-    # TODO: Implement a 3x3 edge detection kernel.                     #
-    # Hint: A common kernel is [[0, 1, 0], [1, -4, 1], [0, 1, 0]]      #
-    # ================================================================ #
-    
+    # --- SOLUTION START ---
     kernel = None
     
-    # --- SOLUTION START ---
     kernel = np.array([
         [0, 1, 0], 
         [1, -4, 1], 
@@ -73,10 +63,10 @@ def get_sharpen_kernel(blur_kernel: np.ndarray, sharpness_factor: float=1.5) -> 
     Returns:
         A 3x3 numpy array.
     """
+    # --- SOLUTION START ---
     identity_kernel = np.zeros_like(blur_kernel)
     identity_kernel[1, 1] = 1  # Identity kernel for 3x3 (center pixel is 1, others are 0)
 
-    # --- SOLUTION START ---
     # Calculate the unsharp mask kernel
     unsharp_kernel = identity_kernel - blur_kernel
 
